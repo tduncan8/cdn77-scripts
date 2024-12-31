@@ -1,6 +1,5 @@
 import argparse
 import requests
-<<<<<<< HEAD
 import sys
 import json
 parser = argparse.ArgumentParser()
@@ -47,12 +46,3 @@ if purge_results:
         print("Error: The response could not be parsed as JSON.")
 else:
  print('purge request failed')
-=======
-parser = argparse.ArgumentParser()
-
-parser.add_argument("-z","--zone", help="cdn77 zone id")
-parser.add_argument("-t","--token", help="cdn77 api token")
-parser.add_argument("-f","--file", help="file to purge from cache")
-args = parser.parse_args()
-
->>>>>>> d1baaa8 (Start purge-files.py)
