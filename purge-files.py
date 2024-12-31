@@ -22,7 +22,11 @@ url = f"https://api.cdn77.com/v3/cdn/{zone}/job/purge"
 
 print(f"- Interacting with zone url: {url}")
 
-response = requests.post(url, json=data, headers=headers)
-print(response)
-print(response.json())
+def purge_file(url, data, headers):
+  response = requests.post(url, json=data, headers=headers)
+  return response
+
+
+purge_results = purge_file(url,data,headers)
+print(purge_results.json())
 
