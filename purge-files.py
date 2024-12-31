@@ -14,6 +14,15 @@ if len(sys.argv) == 1:
 
 args = parser.parse_args()
 zone = args.zone
+auth_token = args.token
+file = args.file
+data = {'paths' : f'{file}'}
+headers = {'Authorization': f'Bearer {auth_token}'}
 url = f"https://api.cdn77.com/v3/cdn/{zone}/job/purge"
+
 print(f"- Interacting with zone url: {url}")
+
+response = requests.post(url, json=data, headers=headers)
+print(response)
+print(response.json())
 
