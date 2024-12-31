@@ -5,7 +5,7 @@ parser = argparse.ArgumentParser()
 
 parser.add_argument("--zone", help="cdn77 zone id", type=int, required=True)
 parser.add_argument("--token", help="cdn77 api token", type=str, required=True)
-parser.add_argument("--file", help=" relative file to purge from cache", type=str, required=True)
+parser.add_argument("--file", help="Relative files to purge from cache (space-separated list)",nargs='+', type=str, required=True)
 
 # check for no arguments entered and print help and exit.
 if len(sys.argv) == 1:
@@ -14,10 +14,10 @@ if len(sys.argv) == 1:
 
 args = parser.parse_args()
 zone = args.zone
-auth_token = args.token
 file = args.file
-data = {'paths' : f'{file}'}
-headers = {'Authorization': f'Bearer {auth_token}'}
+auth_token = args.token
+data = {'paths' : file}
+headers = {'Authorization': f"Bearer {auth_token}"}
 url = f"https://api.cdn77.com/v3/cdn/{zone}/job/purge"
 
 print(f"- Interacting with zone url: {url}")
